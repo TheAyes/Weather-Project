@@ -8,7 +8,7 @@ const getGeoData = async (city, stateCode, countryCode) => {
 		name: data.name,
 		state: data.state,
 		country: data.country,
-		lateral: data.lat,
+		latitude: data.lat,
 		longitude: data.lon
 	}
 }

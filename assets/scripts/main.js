@@ -1,114 +1,59 @@
-const weatherTable = document.querySelector('#weather-table');
-let monate = ["Januar", "Februar", "März", "April", "Mai", "Juni", "Juli", "August", "September", "Oktober", "November", "Dezember"
-];
+// Get the geographical data for Düsseldorf with latitude 49 and longitude NW
+getGeoData("Düsseldorf", "NW", "49").then(geoData => {
+	// Fetch the weather data for the given latitude and longitude using the OpenWeatherMap API
+	fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoData.latitude}&lon=${geoData.longitude}&units=metric&appid=${apiKey}`)
+		.then(response => response.json())
+		.then(data => {
+			// Call the updateWeather function with the retrieved geographical and weather data
+			updateWeather(geoData, data);
 
-
-weatherTable.innerHTML = `<table width="100%" border="1">
-        <tr>
-            <td>Local Time</td>
-            <td id="localTime"></td>
-        </tr>
-        <tr>
-            <td>Wind</td>
-            <td id="windCity"></td>
-        </tr>
-        <tr>
-            <td>Cloudiness</td>
-            <td id="cloudCity"></td>
-        </tr>
-        <tr>
-            <td>Pressure</td>
-            <td id="pressureCity"></td>
-        </tr>
-        <tr>
-            <td>Humidity</td>
-            <td id="humidityCity"></td>
-        </tr>
-        <tr>
-            <td>Sunrise</td>
-            <td id="sunriseCity"></td>
-        </tr>
-        <tr>
-            <td>Sunset</td>
-            <td id="sunsetCity"></td>
-        </tr>
-        <tr>
-            <td>Geo coords</td>
-            <td id="geoCity"></td>
-        </tr>`;
-
-
-getGeoData("Düsseldorf", "NW", "49").then(data => {
-    console.log(data);
-    fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${data.lateral}&lon=${data.longitude}&appid=${apiKey}`)
-        .then(response => response.json())
-        .then(data => {
-            console.log(data);
-
-            const weatherImage = document.querySelector('#weatherImage');
-            weatherImage.setAttribute('src', `http://openweathermap.org/img/w/${data.weather[0].icon}.png`)
-
-            const windCity = document.querySelector('#windCity');
-            windCity.innerHTML = `${data.wind.speed} ${data.wind.deg} ${data.wind.gust}`;
-
-            const cloudCity = document.querySelector('#cloudCity');
-            cloudCity.innerHTML = `${data.weather[0].description}`;
-
-            const pressureCity = document.querySelector('#pressureCity');
-            pressureCity.innerHTML = `${data.main.pressure} hpa`
-
-            const humidityCity = document.querySelector('#humidityCity');
-            humidityCity.innerHTML = `${data.main.humidity} %`
-
-            const sunriseCity = document.querySelector('#sunriseCity');
-            sunriseCity.innerHTML = `${data.sys.sunrise}`
-            // let timestamp = data.sys.sunrise;
-            // let date2 = new Date(timestamp).getHour();
-            // // console.log(date2.getTime())
-            // // console.log(date2)
-            // sunriseCity.innerHTML = `${date2}`
-
-            const sunsetCity = document.querySelector('#sunsetCity');
-            sunsetCity.innerHTML = `${data.sys.sunset}`
-
-            const geoCity = document.querySelector('#geoCity');
-            geoCity.innerHTML = `[${data.coord.lat.toFixed(2)}, ${data.coord.lon.toFixed(2)}]`;
-
-
-            // BITTE NICHT LÖSCHEN; WIRD NOCH FÜR DIE UHR BENÖTIGT
-        })
-        .then(() => {
-            // let iconurl = "http://openweathermap.org/img/w/" + iconcode + ".png";
-            const temperature = document.querySelector('h2');
-            const weatherDescription = document.querySelector('#weatherDescription');
-            // const obtainedTime = document.querySelector();
-            const localTimeCity = document.querySelector('#localTime');
-            const date = new Date();
-            // console.log(date);
-            localTimeCity.innerHTML = `${date.getHours()}:${date.getMinutes()}, ${date.getDate()}. ${monate[date.getMonth()]} ${date.getFullYear()}`;
-        })
+			// Define a TableElement constructor function that takes in key-value pairs and sets them as properties
+			const TableElement = (key, value) => {
+				TableElement.key = key;
+				TableElement.value = value;
+			}
+		})
 })
 
+// Update the weather information on the webpage with the given geographical and weather data
+const updateWeather = (geoData, weatherData) => {
+	// Select the HTML container element where the weather information will be displayed
+	const container = document.querySelector('#container');
 
+	// Update the container's inner HTML with the relevant weather information and geographical location
+	container.innerHTML = `
+		<h1 class="both-col">Weather in ${geoData.name}</h1>
+		<h2 class="both-col">${geoData.state} ${geoData.country}</h2>
+		<img class="left-col" src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" alt="image of ${weatherData.weather[0].description}">
+		<h3 class="right-col">${weatherData.main.temp}°C</h3>
+		<p class="both-col">${weatherData.weather[0].description}</p>
+		<p class="left-col">last updated: ${new Date().toLocaleTimeString("de-DE")}, ${new Date().toLocaleDateString("de-DE")}</p>
+		<a class="right-col" href="#">wrong data?</a>
+	`;
 
+	// Define a TableElement constructor function that takes in key-value pairs and sets them as properties
+	function TableElement(key, value) {
+		this.key = key;
+		this.value = value;
+	};
 
+	// Create an array of TableElement instances representing the different weather attributes to be displayed
+	const tableElements = [
+		new TableElement("Local Time", `${new Date().toTimeString()}`),
+		new TableElement("Wind", `${weatherData.wind.speed} ${weatherData.wind.deg} ${weatherData.wind.gust}`),
+		new TableElement("Cloudiness", `${weatherData.weather[0].description}`),
+		new TableElement("Pressure", `${weatherData.main.pressure} hpa`),
+		new TableElement("Humidity", `${weatherData.main.humidity}%`),
+		new TableElement("Sunrise", `${new Date(weatherData.sys.sunrise).toLocaleTimeString("de-DE")}`),
+		new TableElement("Sunset", `${new Date(weatherData.sys.sunset).toLocaleTimeString("de-DE")}`),
+		new	TableElement("Geo Coords", `[${weatherData.coord.lat.toFixed(2)}, ${weatherData.coord.lon.toFixed(2)}]`)
+	];
 
-
-
-
-
-
-        // data.forEach((elt) => {
-        //     // console.log(elt);
-        //     // console.log(elt.name);
-        //     // console.log(elt.email);
-        //     // console.log(elt.website);
-        //     section.innerHTML +=
-        //     <div>
-        //     <p>${elt.name}</p>
-        //     <p>${elt.email}</p>
-        //     <p>${elt.website}</p>
-        //     </div>`
-
-        // })
-
+	// Iterate over the array of TableElements and add each one to the container's inner HTML
+	tableElements.forEach(item => {
+		container.innerHTML += `
+			<p class="left-col">${item.key}</p>
+			<p class="right-col">${item.value}</p>
+		`;
+	})
+}
