@@ -13,5 +13,17 @@ section {
 }
 
 section img {
-    width: 25px;
+    width: 50px;
+}
+
+table {
+    width: 40vw;
+    border: 1px solid grey;
+    border-collapse: collapse;
+}
+
+td,
+tr {
+    background-color: rgb(255, 255, 255);
+    border: 1px solid grey;
 }
