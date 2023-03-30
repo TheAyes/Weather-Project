@@ -1,9 +1,11 @@
 // Get the geographical data for Düsseldorf with latitude 49 and longitude NW
-getGeoData("Düsseldorf", "NW", "49").then(geoData => {
+getGeoData("49196", "DE").then(geoData => {
+	console.log(geoData)
 	// Fetch the weather data for the given latitude and longitude using the OpenWeatherMap API
-	fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoData.latitude}&lon=${geoData.longitude}&units=metric&appid=${apiKey}`)
+	fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoData.lat}&lon=${geoData.lon}&units=metric&appid=${apiKey}`)
 		.then(response => response.json())
 		.then(data => {
+
 			// Call the updateWeather function with the retrieved geographical and weather data
 			updateWeather(geoData, data);
 
@@ -22,8 +24,8 @@ const updateWeather = (geoData, weatherData) => {
 
 	// Update the container's inner HTML with the relevant weather information and geographical location
 	container.innerHTML = `
-		<h1 class="both-col">Weather in ${geoData.name}</h1>
-		<h2 class="both-col">${geoData.state} ${geoData.country}</h2>
+		<h1 class="both-col">Weather in ${geoData.name}, ${geoData.country}</h1>
+		
 		<img class="left-col" src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" alt="image of ${weatherData.weather[0].description}">
 		<h3 class="right-col">${weatherData.main.temp}°C</h3>
 		<p class="both-col">${weatherData.weather[0].description}</p>
@@ -39,7 +41,7 @@ const updateWeather = (geoData, weatherData) => {
 
 	// Create an array of TableElement instances representing the different weather attributes to be displayed
 	const tableElements = [
-		new TableElement("Local Time", `${new Date().toTimeString()}`),
+		new TableElement("Local Time", `${new Date().toLocaleTimeString("de-DE")}`),
 		new TableElement("Wind", `${weatherData.wind.speed} ${weatherData.wind.deg} ${weatherData.wind.gust}`),
 		new TableElement("Cloudiness", `${weatherData.weather[0].description}`),
 		new TableElement("Pressure", `${weatherData.main.pressure} hpa`),
