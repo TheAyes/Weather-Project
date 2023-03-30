@@ -1,0 +1,17 @@
+html {
+    font-family: Helvetica, sans-serif;
+}
+
+section {
+    background-color: rgb(223, 223, 223);
+    width: 30vw;
+    margin: 0 auto;
+    border-radius: 7px;
+    padding: 2%;
+    margin-top: 10vh;
+
+}
+
+section img {
+    width: 25px;
+}
