@@ -26,7 +26,7 @@ const fetchWeatherData = (value) => {
 					<h1 class="both-col">Weather in ${weatherData.name}, ${weatherData.sys.country}</h1>
 					<div>
 						<img class="left-col" src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png" alt="image of ${weatherData.weather[0].description}">
-						<h3 class="right-col">${weatherData.main.temp}°C</h3>
+						<h3 class="right-col">${weatherData.main.temp.toFixed(1)}°C</h3>
 					</div>
 					<p class="both-col">${weatherData.weather[0].description}</p>
 					<div>
@@ -65,12 +65,12 @@ const fetchWeatherData = (value) => {
 				},
 				{
 					key: "Sunrise",
-					value: `${new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString().slice(0, 5)} `
+					value: `${new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString("de-DE").slice(0, 5)} `
 
 				},
 				{
 					key: "Sunset",
-					value: `${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString().slice(0, 5)} `
+					value: `${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString("de-DE").slice(0, 5)} `
 				},
 				{
 					key: "Geo Coords",
