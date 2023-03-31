@@ -11,10 +11,17 @@ html {
 
 body {
 	font-family: Helvetica, sans-serif;
+	background-color: #8BC6EC;
+	background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
 }
 
 .weather-info {
 	margin-bottom: 5vh;
+}
+
+.weather-info img {
+	width: 80px
 }
 
 .weather-info h1 {
@@ -35,13 +42,6 @@ body {
 	margin: 2vh 0;
 }
 
-.weatherTable {
-	/* display: grid; */
-	/* grid-template-columns: 1fr 1fr;
-	justify-content: center;
-	align-items: center;
-	gap: 5px; */
-}
 
 .weatherTable div {
 	display: flex;
@@ -53,17 +53,16 @@ body {
 
 
 #container {
-	background-color: rgb(223, 223, 223);
-	width: clamp(420px, 80vw, 1980px);
-	border-radius: 7px;
-	padding: 2%;
+	background: rgba(255, 255, 255, 0.25);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+	backdrop-filter: blur(4px);
+	-webkit-backdrop-filter: blur(4px);
+	border: 1px solid rgba(255, 255, 255, 0.18);
+	width: 45vw;
+	border-radius: 20px;
+	padding: 5%;
 	margin: 10vh auto 0;
-
-	/* display: grid;
-	grid-template-columns: 1fr 1fr;
-	justify-content: center;
-	align-items: center;
-	gap: 5px; */
+	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
 
