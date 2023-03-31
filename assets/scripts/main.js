@@ -18,13 +18,16 @@ const updateWeather = (geoData, weatherData) => {
 	// Update the container's inner HTML with the relevant weather information and geographical location
 	container.innerHTML = `
 		<article class="weather-info">
+		<h1 class="both-col">Weather in ${geoData.name}, ${geoData.country}</h1>
 			<img class="left-col" src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" alt="image of ${weatherData.weather[0].description}">
 			<h3 class="right-col">${weatherData.main.temp}°C</h3>
 			<p class="both-col">${weatherData.weather[0].description}</p>
+			<div>
 			<p class="left-col">last updated: ${new Date().toLocaleTimeString("de-DE")}, ${new Date().toLocaleDateString("de-DE")}</p>
-			<a class="right-col" href="#">wrong data?</a>
+			<a class="right-col" id ="data" href="#">wrong data?</a>
+			</div>
 			
-			<h1 class="both-col">Weather in ${geoData.name}, ${geoData.country}</h1>
+			
 		</article>
 	`;
 
@@ -43,7 +46,7 @@ const updateWeather = (geoData, weatherData) => {
 		new TableElement("Humidity", `${weatherData.main.humidity}%`),
 		new TableElement("Sunrise", `${weatherData.sys.sunrise}`),
 		new TableElement("Sunset", `${weatherData.sys.sunset}`),
-		new	TableElement("Geo Coords", `[${weatherData.coord.lat.toFixed(2)}, ${weatherData.coord.lon.toFixed(2)}]`)
+		new TableElement("Geo Coords", `[${weatherData.coord.lat.toFixed(2)}, ${weatherData.coord.lon.toFixed(2)}]`)
 	];
 
 	// Iterate over the array of TableElements and add each one to the container's inner HTML
