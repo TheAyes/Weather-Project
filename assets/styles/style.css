@@ -42,3 +42,8 @@ body {
 #container img {
 	width: 50px;
 }
+
+#weather-info {
+    display: flex;
+    flex-direction: column;
+}

@@ -17,13 +17,15 @@ const updateWeather = (geoData, weatherData) => {
 
 	// Update the container's inner HTML with the relevant weather information and geographical location
 	container.innerHTML = `
-		<h1 class="both-col">Weather in ${geoData.name}, ${geoData.country}</h1>
-		
-		<img class="left-col" src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" alt="image of ${weatherData.weather[0].description}">
-		<h3 class="right-col">${weatherData.main.temp}°C</h3>
-		<p class="both-col">${weatherData.weather[0].description}</p>
-		<p class="left-col">last updated: ${new Date().toLocaleTimeString("de-DE")}, ${new Date().toLocaleDateString("de-DE")}</p>
-		<a class="right-col" href="#">wrong data?</a>
+		<article class="weather-info">
+			<img class="left-col" src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" alt="image of ${weatherData.weather[0].description}">
+			<h3 class="right-col">${weatherData.main.temp}°C</h3>
+			<p class="both-col">${weatherData.weather[0].description}</p>
+			<p class="left-col">last updated: ${new Date().toLocaleTimeString("de-DE")}, ${new Date().toLocaleDateString("de-DE")}</p>
+			<a class="right-col" href="#">wrong data?</a>
+			
+			<h1 class="both-col">Weather in ${geoData.name}, ${geoData.country}</h1>
+		</article>
 	`;
 
 	// Define a TableElement constructor function that takes in key-value pairs and sets them as properties
@@ -45,10 +47,15 @@ const updateWeather = (geoData, weatherData) => {
 	];
 
 	// Iterate over the array of TableElements and add each one to the container's inner HTML
+	const tableContainer = document.createElement("article");
+	tableContainer.classList.add("weatherTable");
 	tableElements.forEach(item => {
-		container.innerHTML += `
-			<p class="left-col">${item.key}</p>
-			<p class="right-col">${item.value}</p>
+		tableContainer.innerHTML += `
+			<div>
+				<p class="left-col">${item.key}</p>
+				<p class="right-col">${item.value}</p>
+			</div>
 		`;
 	})
+	container.appendChild(tableContainer)
 }
