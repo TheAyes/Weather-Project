@@ -16,12 +16,29 @@ body {
 
 }
 
+form {
+	text-align: center;
+	margin-top: 5vh;
+}
+
+
+form label {
+	display: block;
+	margin-bottom: 20px;
+}
+
+form input {
+	border-radius: 10px;
+	border: none;
+	padding: 2px;
+}
+
 .weather-info {
 	margin-bottom: 5vh;
 }
 
 .weather-info img {
-	width: 80px
+	margin: 0 -40px;
 }
 
 .weather-info h1 {
@@ -32,6 +49,12 @@ body {
 .weather-info div {
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
+}
+
+.weather-info div a {
+	text-decoration: none;
+	color: rgb(187, 60, 60);
 }
 
 .weather-info div p {
@@ -39,7 +62,10 @@ body {
 }
 
 .weather-info h3 {
+	font-size: 3rem;
 	margin: 2vh 0;
+	font-weight: 00;
+	color: rgb(31, 31, 84);
 }
 
 
@@ -61,7 +87,7 @@ body {
 	width: 45vw;
 	border-radius: 20px;
 	padding: 5%;
-	margin: 10vh auto 0;
+	margin: 5vh auto 0;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 

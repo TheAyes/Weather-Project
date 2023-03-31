@@ -1,7 +1,7 @@
 const fetchWeatherData = (value) => {
 	let targetValue;
 
-	if (value === "" || value === null ||value === undefined){
+	if (value === "" || value === null || value === undefined) {
 		targetValue = "40210"
 	}
 	else {
@@ -21,8 +21,10 @@ const fetchWeatherData = (value) => {
 				container.innerHTML = `
 					<article class="weather-info">
 						<h1 class="both-col">Weather in ${geoData.name}, ${geoData.country}</h1>
-						<img class="left-col" src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png" alt="image of ${weatherData.weather[0].description}">
+						<div>
+						<img class="left-col" src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@4x.png" alt="image of ${weatherData.weather[0].description}">
 						<h3 class="right-col">${weatherData.main.temp}°C</h3>
+						</div>
 						<p class="both-col">${weatherData.weather[0].description}</p>
 						<div>
 							<p class="left-col">last updated: ${new Date().toLocaleTimeString("de-DE")}, ${new Date().toLocaleDateString("de-DE")}</p>
@@ -84,7 +86,7 @@ const fetchWeatherData = (value) => {
 }
 
 const searchButton = document.querySelector("#searchButton");
-searchButton.addEventListener("click" , event => {
+searchButton.addEventListener("click", event => {
 	fetchWeatherData(document.querySelector("#zipField").value);
 })
 
