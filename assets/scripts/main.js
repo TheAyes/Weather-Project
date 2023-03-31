@@ -1,5 +1,6 @@
 const fetchWeatherData = (value) => {
 	let targetValue;
+	console.log("fetched")
 
 	if (value === "" || value === null || value === undefined) {
 		targetValue = "40210"
@@ -16,7 +17,12 @@ const fetchWeatherData = (value) => {
 			const container = document.querySelector('#container');
 
 			// Update the container's inner HTML with the relevant weather information and geographical location
-			container.innerHTML += `
+			container.innerHTML = `
+				<form action="#" onsubmit="return false">
+					<label for="zipField">Enter your Zip Code</label>
+					<input id="zipField" type="number" required>
+					<button id="searchButton" value="search">search</button>
+				</form>
 				<article class="weather-info">
 					<h1 class="both-col">Weather in ${weatherData.name}, ${weatherData.sys.country}</h1>
 					<div>
@@ -30,6 +36,11 @@ const fetchWeatherData = (value) => {
 					</div>
 				</article>
 			`;
+
+			const searchButton = document.querySelector("#searchButton");
+			searchButton.addEventListener("click", event => {
+				fetchWeatherData(document.querySelector("#zipField").value);
+			})
 
 			// Create an array of TableElement instances representing the different weather attributes to be displayed
 			const tableElements = [
@@ -79,13 +90,10 @@ const fetchWeatherData = (value) => {
 					</div>
 				`;
 			})
-			container.appendChild(tableContainer)
+			container.appendChild(tableContainer);
 		})
 }
 
-const searchButton = document.querySelector("#searchButton");
-searchButton.addEventListener("click", event => {
-	fetchWeatherData(document.querySelector("#zipField").value);
-})
+
 
 fetchWeatherData()
