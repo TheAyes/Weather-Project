@@ -31,12 +31,6 @@ const fetchWeatherData = (value) => {
 					</article>
 				`;
 
-				// Define a TableElement constructor function that takes in key-value pairs and sets them as properties
-				function TableElement(key, value) {
-					this.key = key;
-					this.value = value;
-				};
-
 				// Create an array of TableElement instances representing the different weather attributes to be displayed
 				const tableElements = [
 					{
@@ -61,11 +55,11 @@ const fetchWeatherData = (value) => {
 					},
 					{
 						key: "Sunrise",
-						value: `${weatherData.sys.sunrise}`
+						value: `${new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString()}`
 					},
 					{
 						key: "Sunset",
-						value: `${weatherData.sys.sunset}`
+						value: `${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString()}`
 					},
 					{
 						key: "Geo Coords",
