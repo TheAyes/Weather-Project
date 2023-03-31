@@ -18,7 +18,9 @@ html {
 body {
 	font-family: Helvetica, sans-serif;
 	padding: 5vh 0;
-
+	background-image: url("../img/e-AnGx1n-gtw8-unsplash.jpg"), linear-gradient(135deg, rgba(139, 197, 236, 0.9) 0%, rgba(149, 153, 226, 0.9) 100%);
+	/* background-color: rgba(164, 164, 164, 0.7); */
+	background-blend-mode: multiply;
 }
 
 ::placeholder {
@@ -122,8 +124,8 @@ button {
 #container {
 	margin: 0 auto;
 	background: rgba(255, 255, 255, 0.25);
-	backdrop-filter: blur(4px);
-	-webkit-backdrop-filter: blur(4px);
+	backdrop-filter: blur(7px);
+	-webkit-backdrop-filter: blur(7px);
 	border: 1px solid rgba(255, 255, 255, 0.18);
 	width: 45vw;
 	border-radius: 20px;
