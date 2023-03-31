@@ -5,15 +5,8 @@ getGeoData("49196", "DE").then(geoData => {
 	fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${geoData.lat}&lon=${geoData.lon}&units=metric&appid=${apiKey}`)
 		.then(response => response.json())
 		.then(data => {
-
 			// Call the updateWeather function with the retrieved geographical and weather data
 			updateWeather(geoData, data);
-
-			// Define a TableElement constructor function that takes in key-value pairs and sets them as properties
-			const TableElement = (key, value) => {
-				TableElement.key = key;
-				TableElement.value = value;
-			}
 		})
 })
 
@@ -46,8 +39,8 @@ const updateWeather = (geoData, weatherData) => {
 		new TableElement("Cloudiness", `${weatherData.weather[0].description}`),
 		new TableElement("Pressure", `${weatherData.main.pressure} hpa`),
 		new TableElement("Humidity", `${weatherData.main.humidity}%`),
-		new TableElement("Sunrise", `${new Date(weatherData.sys.sunrise).toLocaleTimeString("de-DE")}`),
-		new TableElement("Sunset", `${new Date(weatherData.sys.sunset).toLocaleTimeString("de-DE")}`),
+		new TableElement("Sunrise", `${weatherData.sys.sunrise}`),
+		new TableElement("Sunset", `${weatherData.sys.sunset}`),
 		new	TableElement("Geo Coords", `[${weatherData.coord.lat.toFixed(2)}, ${weatherData.coord.lon.toFixed(2)}]`)
 	];
 
