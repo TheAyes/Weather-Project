@@ -57,12 +57,12 @@ const fetchWeatherData = (value) => {
 					},
 					{
 						key: "Sunrise",
-						value: `${new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString().slice(0, 5)} Uhr`
+						value: `${new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString().slice(0, 5)} `
 
 					},
 					{
 						key: "Sunset",
-						value: `${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString().slice(0, 5)} Uhr`
+						value: `${new Date(weatherData.sys.sunset * 1000).toLocaleTimeString().slice(0, 5)} `
 					},
 					{
 						key: "Geo Coords",

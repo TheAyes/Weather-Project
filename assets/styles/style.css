@@ -7,12 +7,18 @@
 html {
 	font-size: 20px;
 	scroll-behavior: smooth;
+	color: rgb(31, 31, 84);
+	background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: center;
+
 }
 
 body {
 	font-family: Helvetica, sans-serif;
-	background-color: #8BC6EC;
-	background-image: linear-gradient(135deg, #8BC6EC 0%, #9599E2 100%);
+
+	padding: 5vh 0;
 
 }
 
@@ -22,10 +28,6 @@ form {
 }
 
 
-form label {
-	display: block;
-	margin-bottom: 20px;
-}
 
 form input {
 	border-radius: 10px;
@@ -34,7 +36,8 @@ form input {
 }
 
 .weather-info {
-	margin-bottom: 5vh;
+	margin-bottom: 2vh;
+	padding: 4%;
 }
 
 .weather-info img {
@@ -42,11 +45,14 @@ form input {
 }
 
 .weather-info h1 {
-	font-size: 1.7rem;
+	color: rgb(31, 31, 84);
+	font-size: 1.9rem;
 	margin-bottom: 2vh;
+	font-weight: 700;
 }
 
 .weather-info div {
+
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -57,15 +63,25 @@ form input {
 	color: rgb(187, 60, 60);
 }
 
+.weather-info p {
+	padding: 0 8px;
+}
+
 .weather-info div p {
 	margin: 2vh 0;
+
 }
 
 .weather-info h3 {
 	font-size: 3rem;
 	margin: 2vh 0;
-	font-weight: 00;
+	font-weight: 600;
 	color: rgb(31, 31, 84);
+}
+
+.weatherTable {
+	padding: 4%;
+	border-radius: 20px;
 }
 
 
@@ -74,11 +90,19 @@ form input {
 	justify-content: space-between;
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	padding: 10px 0;
+	padding: 8px 8px;
+	margin: 10px 0;
+	border-radius: 10px;
+	background: rgba(255, 255, 255, 0.281);
+}
+
+.weatherTable div p {
+	padding: 2px;
 }
 
 
 #container {
+	margin: 0 auto;
 	background: rgba(255, 255, 255, 0.25);
 	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
 	backdrop-filter: blur(4px);
@@ -87,7 +111,6 @@ form input {
 	width: 45vw;
 	border-radius: 20px;
 	padding: 5%;
-	margin: 5vh auto 0;
 	box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
 }
 
