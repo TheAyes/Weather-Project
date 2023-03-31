@@ -21,7 +21,7 @@ const fetchWeatherData = (value) => {
 				container.innerHTML = `
 					<article class="weather-info">
 						<h1 class="both-col">Weather in ${geoData.name}, ${geoData.country}</h1>
-						<img class="left-col" src="http://openweathermap.org/img/w/${weatherData.weather[0].icon}.png" alt="image of ${weatherData.weather[0].description}">
+						<img class="left-col" src="http://openweathermap.org/img/wn/${weatherData.weather[0].icon}@2x.png" alt="image of ${weatherData.weather[0].description}">
 						<h3 class="right-col">${weatherData.main.temp}°C</h3>
 						<p class="both-col">${weatherData.weather[0].description}</p>
 						<div>
