@@ -39,15 +39,39 @@ const updateWeather = (geoData, weatherData) => {
 
 	// Create an array of TableElement instances representing the different weather attributes to be displayed
 	const tableElements = [
-		new TableElement("Local Time", `${new Date().toLocaleTimeString("de-DE")}`),
-		new TableElement("Wind", `${weatherData.wind.speed} ${weatherData.wind.deg} ${weatherData.wind.gust}`),
-		new TableElement("Cloudiness", `${weatherData.weather[0].description}`),
-		new TableElement("Pressure", `${weatherData.main.pressure} hpa`),
-		new TableElement("Humidity", `${weatherData.main.humidity}%`),
-		new TableElement("Sunrise", `${weatherData.sys.sunrise}`),
-		new TableElement("Sunset", `${weatherData.sys.sunset}`),
-		new TableElement("Geo Coords", `[${weatherData.coord.lat.toFixed(2)}, ${weatherData.coord.lon.toFixed(2)}]`)
-	];
+		{
+			key: "Local Time",
+			value: `${new Date().toLocaleTimeString("de-DE")}`
+		},
+		{
+			key: "Wind",
+			value: `${weatherData.wind.speed} ${weatherData.wind.deg} ${weatherData.wind.gust}`
+		},
+		{
+			key: "Cloudiness",
+			value: `${weatherData.weather[0].description}`
+		},
+		{
+			key: "Pressure",
+			value: `${weatherData.main.pressure} hpa`
+		},
+		{
+			key: "Humidity",
+			value: `${weatherData.main.humidity}%`
+		},
+		{
+			key: "Sunrise",
+			value: `${weatherData.sys.sunrise}`
+		},
+		{
+			key: "Sunset",
+			value: `${weatherData.sys.sunset}`
+		},
+		{
+			key: "Geo Coords",
+			value: `[${weatherData.coord.lat.toFixed(2)}, ${weatherData.coord.lon.toFixed(2)}]`
+		}
+	]
 
 	// Iterate over the array of TableElements and add each one to the container's inner HTML
 	const tableContainer = document.createElement("article");
