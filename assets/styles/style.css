@@ -19,7 +19,8 @@ body {
 	font-family: Helvetica, sans-serif;
 	padding: 5vh 0;
 	background-image: url("../img/e-AnGx1n-gtw8-unsplash.jpg"), linear-gradient(135deg, rgba(255, 255, 255, 0.2) 20%, rgba(120, 120, 255, 0.2) 60%);
-	/* background-color: rgba(164, 164, 164, 0.7); */
+	background-repeat: no-repeat;
+	background-position: center;: ;
 	background-blend-mode: darken;
 }
 
