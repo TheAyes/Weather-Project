@@ -18,10 +18,12 @@ html {
 body {
 	font-family: Helvetica, sans-serif;
 	padding: 5vh 0;
-	background-image: url("../img/e-AnGx1n-gtw8-unsplash.jpg"), linear-gradient(135deg, rgba(255, 255, 255, 0.2) 20%, rgba(120, 120, 255, 0.2) 60%);
+	background-image: url("../img/uriel-xtgONQzGgOE-unsplash.jpg"), linear-gradient(135deg, rgba(255, 255, 255, 0.2) 20%, rgba(120, 154, 255, 0.2) 60%);
 	background-repeat: no-repeat;
 	background-position: center;
-	background-blend-mode: darken;
+	background-size: cover;
+	background-blend-mode: lighten;
+	backdrop-filter: blur(30px);
 }
 
 ::placeholder {
@@ -136,7 +138,7 @@ button:hover {
 
 #container {
 	margin: 0 auto;
-	background: rgba(255, 255, 255, 0.25);
+	background: rgba(255, 255, 255, 0.321);
 	backdrop-filter: blur(7px);
 	-webkit-backdrop-filter: blur(7px);
 	border: 1px solid rgba(255, 255, 255, 0.18);
