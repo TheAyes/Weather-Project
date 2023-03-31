@@ -19,8 +19,7 @@ const fetchWeatherData = (value) => {
 			// Update the container's inner HTML with the relevant weather information and geographical location
 			container.innerHTML = `
 				<form action="#" onsubmit="return false">
-					<label for="zipField">Enter your Zip Code</label>
-					<input id="zipField" type="number" required>
+					<input id="zipField" type="number" required placeholder="Enter your Zip Code">
 					<button id="searchButton" value="search">search</button>
 				</form>
 				<article class="weather-info">
